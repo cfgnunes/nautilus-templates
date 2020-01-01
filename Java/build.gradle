@@ -1,0 +1,21 @@
+apply plugin: 'java'
+apply plugin: 'application'
+
+// The main Class is in the directory: ./src/main/java/Main.java
+mainClassName = 'Main'
+
+def javaVersion = JavaVersion.VERSION_1_7;
+sourceCompatibility = javaVersion;
+targetCompatibility = javaVersion;
+
+jar {
+    manifest {
+        attributes(
+            'Main-Class' : "${mainClassName}",
+        )
+    }
+}
+
+run {
+    args = ['some test argument']
+}
