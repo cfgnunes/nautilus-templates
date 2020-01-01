@@ -10,7 +10,7 @@ To install this templates, put all files in the directory: ~/Templates.
 Or just use the following command:
 
 ```sh
-git clone git@github.com:cfgnunes/xdg-templates.git ~/Templates
+git clone https://github.com/cfgnunes/xdg-templates.git ~/Templates
 ```
 
 ## Contributing
