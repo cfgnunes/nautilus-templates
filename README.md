@@ -1,6 +1,6 @@
 # Nautilus Templates
 
-Templates for creating new files (~/Templates). Used in GNOME Files (Nautilus).
+Templates for creating new files with mouse right click. Used in GNOME Files (Nautilus).
 
 ## Getting Started
 
