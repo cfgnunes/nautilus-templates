@@ -1,4 +1,4 @@
-# XDG Templates
+# Nautilus Templates
 
 Templates for creating new files (~/Templates). Used in GNOME Files (Nautilus).
 
@@ -10,7 +10,7 @@ To install this templates, put all files in the directory: ~/Templates.
 Or just use the following command:
 
 ```sh
-git clone https://github.com/cfgnunes/xdg-templates.git ~/Templates
+git clone https://github.com/cfgnunes/nautilus-templates.git ~/Templates
 ```
 
 ## Contributing
