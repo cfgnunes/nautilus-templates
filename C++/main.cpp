@@ -1,7 +1,10 @@
 #include <iostream>
 
 int main(int argc, char *argv[]) {
-    std::cout << "Hello, World!";
+    (void)argc;
+    (void)argv;
+
+    std::cout << "Hello, World!" << std::endl;
 
     return 0;
 }

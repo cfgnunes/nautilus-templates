@@ -6,7 +6,7 @@ project(main C)
 #find_package(OpenGL REQUIRED)
 #find_package(GLUT REQUIRED)
 
-include_directories(${OPENGL_INCLUDE_DIRS} ${GLUT_INCLUDE_DIRS})
+#include_directories(${OPENGL_INCLUDE_DIRS} ${GLUT_INCLUDE_DIR})
 
 # Set compiler parameters
 set(CMAKE_C_STANDARD 90)
@@ -17,11 +17,10 @@ file(GLOB SRC_FILES src/*.c src/*.h)
 
 # Compile the main executable
 add_executable(${CMAKE_PROJECT_NAME} ${SRC_FILES})
-#target_link_libraries(${CMAKE_PROJECT_NAME} ${OPENGL_LIBRARIES} ${GLUT_LIBRARY} SDLmain SDL SDL_mixer SOIL m)
+#target_link_libraries(${CMAKE_PROJECT_NAME} SOIL ${OPENGL_LIBRARIES} ${GLUT_LIBRARY} SDL2main SDL2 SDL2_mixer m)
 
 # Define the files location during install process
 install(TARGETS ${CMAKE_PROJECT_NAME} DESTINATION "bin")
-#install(DIRECTORY "resource/" DESTINATION "share/${CMAKE_PROJECT_NAME}/resource")
 
 # Define the 'run' target
 add_custom_target(run
