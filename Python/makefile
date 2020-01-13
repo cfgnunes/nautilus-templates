@@ -32,7 +32,7 @@ lint: venv
 	@. $(VENV_ACTIVATE); $(PYTHON) -m pylint \
 		--ignored-modules=cv2 \
 		--disable=invalid-name \
-		--disable=missing-function-docstring \
+		--disable=missing-docstring \
 		--disable=duplicate-code *.py
 	@echo "Done!"
 	@echo
