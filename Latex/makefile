@@ -1,28 +1,36 @@
-SRC       = main
-LATEX     = latexmk
-PDFVIEWER = evince
+SRC = main
+LATEX = latexmk
 
 TEX_FILES = $(shell find . -type f -iname "*.tex" -or -iname "*.cls" -or -iname "*.bib")
 IMG_FILES = $(shell find . -type f -iname "*.png" -or -iname "*.jpg" -or -iname "*.eps")
 PDF_FILES = $(shell find . -type f -iname "*.pdf" ! -iname "$(SRC).pdf")
-IMAGES_SVG = $(shell find . -type f -iname "*.svg")
-IMAGES_PDF = $(IMAGES_SVG:.svg=.pdf)
+SVG_FILES = $(shell find . -type f -iname "*.svg")
 
-.PHONY: all help compile clean run svg
+.PHONY: default help compile clean
 
-all: compile
+default: compile
 
 help:
 	@echo "'make clean': Limpa os arquivos gerados."
 	@echo "'make compile': Gera o documento em PDF."
-	@echo "'make run': Gera o documento em PDF e visualiza."
 	@echo
 
 compile: $(SRC).pdf
-$(SRC).pdf: $(TEX_FILES) $(IMG_FILES) $(PDF_FILES) svg
+
+$(SRC).pdf: $(TEX_FILES) $(IMG_FILES) $(PDF_FILES) $(SVG_FILES:.svg=.pdf)
 	@echo "Compilando o projeto..."
 	@$(LATEX) -pdf -synctex=1 $(SRC).tex
 	@touch $(SRC).pdf
+	@echo "Pronto!"
+	@echo
+
+%.pdf: %.svg
+	@echo "Convertendo imagem SVG para PDF..."
+	@echo " > convertendo '$<'..."
+	@inkscape -D -z --file=$< --export-pdf=$@_tmp.pdf 2>/dev/null
+	@echo " > compactando..."
+	@gs -q -dNOPAUSE -dBATCH -dSAFER -sDEVICE=pdfwrite -dPDFSETTINGS=/printer -sOutputFile=$@ $@_tmp.pdf
+	@rm -f $@_tmp.pdf
 	@echo "Pronto!"
 	@echo
 
@@ -165,22 +173,5 @@ clean:
 		-or -iname "acs-*.bib" \
 		-or -iname "TSWLatexianTemp*" \
 		\) ! -path "./.git/*" -delete
-	@echo "Pronto!"
-	@echo
-
-run: $(SRC).pdf
-	@echo "Abrindo o arquivo PDF..."
-	@$(PDFVIEWER) $(SRC).pdf &
-	@echo "Pronto!"
-	@echo
-
-svg: $(IMAGES_PDF)
-%.pdf: %.svg
-	@echo "Convertendo imagens SVG para PDF..."
-	@echo " > convertendo '$<'..."
-	@inkscape -D -z --file=$< --export-pdf=$@_tmp.pdf 2>/dev/null
-	@echo " > compactando..."
-	@gs -q -dNOPAUSE -dBATCH -dSAFER -sDEVICE=pdfwrite -dPDFSETTINGS=/printer -sOutputFile=$@ $@_tmp.pdf
-	@rm -f $@_tmp.pdf
 	@echo "Pronto!"
 	@echo
