@@ -11,8 +11,8 @@ SVG_FILES = $(shell find . -type f -iname "*.svg")
 default: compile
 
 help:
-	@echo "'make clean': Limpa os arquivos gerados."
-	@echo "'make compile': Gera o documento em PDF."
+	@echo "'make': Gera o documento em PDF."
+	@echo "'make clean': Remove os arquivos gerados."
 	@echo
 
 compile: $(SRC).pdf
