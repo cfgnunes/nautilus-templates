@@ -5,9 +5,7 @@
 # Autor: Cristiano Fraga G. Nunes
 # E-mail: cfgnunes@gmail.com
 
-set -o errexit  # Abort on nonzero exitstatus
-set -o nounset  # Abort on unbound variable
-set -o pipefail # Abort on errors within pipes
+set -eu
 
 SCRIPT_NAME=$(basename "$0")
 SCRIPT_DIR="$(dirname "$(readlink -f "$0")")"
