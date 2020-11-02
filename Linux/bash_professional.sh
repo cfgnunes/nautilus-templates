@@ -18,13 +18,14 @@ _main() {
 }
 
 _log() {
-    STR_MESSAGE="$1"
+    local STR_MESSAGE="$1"
 
     logger -s "[$SCRIPT_NAME] $STR_MESSAGE"
 }
 
 _get_command_path() {
-    COMMAND="$1"
+    local COMMAND="$1"
+    local COMMAND_PATH=""
 
     COMMAND_PATH=$(command -v "$COMMAND") &>/dev/null || true
     echo "$COMMAND_PATH"
