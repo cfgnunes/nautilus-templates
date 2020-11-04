@@ -2,7 +2,7 @@
 
 # <description script>
 #
-# Autor: Cristiano Fraga G. Nunes
+# Author: Cristiano Fraga G. Nunes
 # E-mail: cfgnunes@gmail.com
 
 set -eu
